@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login and Registration Form</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .form-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  .form-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 300px;
+  }
+  .form-box h2 {
+    text-align: center;
+  }
+  .form-box input[type="text"],
+  .form-box input[type="password"],
+  .form-box input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  .form-box button {
+    background-color: #4c55b5;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  .form-box button:hover {
+    opacity: 0.8;
+  }
+  .form-box .checkbox {
+    margin-top: 16px;
+  }
+</style>
+</head>
+<body>
+
+<div class="form-container">
+  <div class="form-box">
+    <h2>Login</h2>
+    <form action="/submit-login" method="post">
+      <input type="text" placeholder="Username " name="uname" required>
+      <input type="password" placeholder="Password" name="psw" required>
+      <button type="submit">Login</button>
+      
+    </form>
+  </div>
+  
+  <div class="form-box">
+    <h2>Register</h2>
+    <form action="/submit-registration" method="post">
+      <input type="email" placeholder="Username" name="email" required>
+      <input type="password" placeholder="Password" name="psw" required>
+      <input type="password" placeholder="Re-enter Password" name="psw-repeat" required>
+      <input type="password" placeholder="Phone" name="psw-repeat" required>
+      <input type="password" placeholder="Email" name="psw-repeat" required>
+      <button type="submit">Đăng Ký</button>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>
