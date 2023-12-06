@@ -7,14 +7,22 @@
         pdo_execute($sql);
     }
 
-    function dangnhap($user,$pass) {
-        $sql="SELECT * FROM taikhoan WHERE user='$user' and pass='$pass'";
+    function dangnhap($user, $pass) {
+        $sql = "SELECT * FROM taikhoan WHERE user='$user' and pass='$pass'";
         $taikhoan = pdo_query_one($sql);
-
-        if ($taikhoan != false) {
-            $_SESSION['user'] = $user;          
+    
+        if ($taikhoan) {
+            $_SESSION['user_id'] = $taikhoan['id']; // Lưu id vào session
+            $_SESSION['user'] = $user;
+    
+            if ($taikhoan['role'] == 0) {
+                echo '<script>window.location.href = "index.php?act=trangchu";</script>';
+            } elseif ($taikhoan['role'] == 1) {
+                echo '<script>window.location.href = "admin/index.php";</script>';
+            }
         } else {
-            return "Thông tin tài khoản sai";
+            $loginMessage = "Tài khoản hoặc mật khẩu không đúng.";
+        return $loginMessage;
         }
     }
 

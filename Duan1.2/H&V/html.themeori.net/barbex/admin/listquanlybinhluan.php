@@ -6,14 +6,31 @@
     td{
         margin: 20px 20px;
         padding: 20px 20px;
+        border: 1px solid black;
     }
     
     input{
         margin: 10px;
         
     }
+    table {
+        
+        align-items: center;
+        width: 100%; 
+        text-align: center;
+        border-collapse: collapse;
+    }
 
-    
+    .description-column {
+        max-width: 400px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    h1{
+        text-align: center;
+    }
 </style>
 <div class="row2" style="margin-top: 200px;">
     <div class="row2 font_title">
@@ -25,14 +42,14 @@
 
                 <table>
                     <tr>
-                        <th></th>
+                        
                         <th>MÃ SẢN PHẨM</th>
                         <th>TÊN SẢN PHẨM</th>
                         <th>GIÁ</th>
                         <th>HÌNH</th>       
                         <th>ICON</th> 
                         <th>SỐ BÌNH LUẬN</th>
-                        <th></th>
+                        <th>MÔ TẢ</th>
                     </tr>
 
                     <?php
@@ -56,15 +73,15 @@
                         }
 
                          echo '<tr>
-                             <td><input type="checkbox" name="" id=""></td>
+                             
                              <td>'.$MaDichVu.'</td>
                              <td>'.$name.'</td>
                              <td>'.$Gia.'</td>
                              <td>'.$hinhpath.'</td>
                              <td>'.$iconpath.'</td>
-                             <td>'.$soBinhLuan.'</td>
+                             <td style="text-align:center;  font-size: 30px;  font-weight: bold;">'.$soBinhLuan.'</td>
                             
-                             <td>'.$MoTa.'</td>
+                             <td class="description-column ">'.$MoTa.'</td>
                             
                          </tr>';
                     }

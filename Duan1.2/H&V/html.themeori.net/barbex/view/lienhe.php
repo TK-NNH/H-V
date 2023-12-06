@@ -1,3 +1,20 @@
+<?php 
+if (isset($_POST['xacnhan'])) {
+    
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $tel = $_POST['tel'];
+    $message = $_POST['message'];
+
+    
+    insert_lienhe($name, $email, $tel, $message);
+
+    
+    echo '<script>alert("Liên hệ thành công!");</script>';
+    
+}
+?>
+
 <!-- Page Banner Start -->
 <div class="page__banner" data-background="assets/img/bg/page.jpg">
         <div class="container">
@@ -7,7 +24,7 @@
                         <h1>Contact</h1>
                         <div class="page__banner-title-menu">
                             <ul>
-                                <li><a href="#">Home</a></li>
+                                <li><a href="index.php?act=trangchu">Home</a></li>
                                 <li><span>_</span>Contact</li>
                             </ul>
                         </div>
@@ -61,7 +78,7 @@
 				<div class="col-xl-12">
 					<div class="contact__area-bottom">
 						<div class="contact__area-bottom-form page">
-							<form action="#">
+							<form action="index.php?act=lienhe" method="POST">
 								<div class="row">
 									<div class="col-sm-12 mb-30">
 										<div class="contact__area-bottom-form-item">
@@ -82,7 +99,7 @@
 									</div>
 									<div class="col-sm-12">
 										<div class="contact__area-bottom-form-item">
-											<button class="theme-banner-btn" type="submit">Xác Nhận<i class="far fa-angle-double-right"></i></button>
+											<button class="theme-banner-btn" type="submit" name="xacnhan">Xác Nhận<i class="far fa-angle-double-right"></i></button>
 										</div>
 									</div>
 								</div>

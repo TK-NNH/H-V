@@ -30,6 +30,7 @@
 	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="assets/sass/style.css">
+	
 </head>
 <style>
 	.logout-button {
@@ -81,7 +82,7 @@
 								<i class="fal fa-phone-alt"></i>
 							</div>
 							<div class="header__area-menubar-left-contact-info">
-								<h6><a href="tel:+125(895)658">Hotline +125 (895) 658</a></h6>
+								<h6><a href="tel:+125(895)658">0398455982</a></h6>
 							</div>
 						</div>
 					</div>
@@ -95,11 +96,14 @@
 									<ul class="sub-menu">
 										<?php
 										
-										$listdichvu = loadall_danhmuc();
-
-										foreach ($listdichvu as $dichvu) {
-											echo '<li><a href="index.php?act=chitietdichvu&MaDichVu=' . $dichvu['MaDichVu'] . '">' . $dichvu['name'] . '</a></li>';
+										
+										$dsdm = loadall_danhmuc();
+										foreach ($dsdm as $dm) {
+											extract($dm);
+											if ($trangthai == 0) {
+											echo '<li><a href="index.php?act=chitietdichvu&MaDichVu=' . $dm['MaDichVu'] . '">' . $dm['name'] . '</a></li>';
 										}
+									}
 										?>
 									</ul>
 								</li>
@@ -108,10 +112,16 @@
 								</li>
 
 								<li><a href="index.php?act=lienhe">Liên Hệ</a></li>
+								<?php 
+								  if (isset($_SESSION['user'])) {
+									echo '<li><a href="index.php?act=lichhen">Lịch sử</a></li>';
+								  }
+								?>
+								
 							</ul>
 						</div>
 						<div class="header__area-menubar-right-box">
-							<div class="header__area-menubar-right-box-search">
+							<!-- <div class="header__area-menubar-right-box-search">
 								<div class="search">
 									<span class="header__area-menubar-right-box-search-icon open"><i class="fal fa-search"></i></span>
 								</div>
@@ -122,9 +132,9 @@
 										</button>
 									</form> <span class="header__area-menubar-right-box-search-box-icon"><i class="fal fa-times"></i></span>
 								</div>
-							</div>
+							</div> -->
 							<div class="header__area-menubar-right-box-btn">
-								<a href="" class="theme-banner-btn">Đặt lịch ngay<i class="far fa-angle-double-right"></i></a>
+								<a href="index.php?act=datlich" class="theme-banner-btn">Đặt lịch ngay<i class="far fa-angle-double-right"></i></a>
 							</div>
 							<div class="header__area-menubar-right-box-btn">
 								<?php if (isset($_SESSION['user'])) : ?>
@@ -134,11 +144,7 @@
 								<?php else : ?>
 									<a href="index.php?act=dangnhap" class="theme-banner-btn" id="dangnhap">Đăng nhập</a>
 								<?php endif; ?>
-								<?php
-							if (isset($_SESSION['user']) && $_SESSION['user'] == "admin") {
-								echo "<a class='logout-button' href='admin/index.php?act=listsp' target='_blank' style:max-width:50px>Quản lý</a>";
-							}
-							?>
+								
 							</div>
 							
 						</div>

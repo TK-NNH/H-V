@@ -1,17 +1,62 @@
 <style>
+    h1 {
+        text-align: center;
+    }
+
     th {
-        padding: 20px;
-        margin: 20px 20px;
+        padding: 10px;
+        margin: 10px;
     }
 
     td {
-        margin: 20px 20px;
-        padding: 20px 20px;
+        margin: 10px 5px !important;
+        padding: 10px;
+        border: 1px solid black;
+        
     }
 
     input {
-        margin: 10px;
+        margin: 5px;
+    }
 
+    .description-column {
+        max-width: 400px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    table {
+        
+        align-items: center;
+        width: 100%; 
+        text-align: center;
+        border-collapse: collapse;
+    }
+
+    .compact-buttons-input {
+        padding: 10px 15px !important;
+        margin: 5px 0;
+        border-radius: 20px !important;
+        border: 1px solid #ccc;
+        background-color: white;
+        transition: background-color 0.3s;
+    }
+
+    .compact-buttons-input:hover {
+        background-color: #e0e0e0;
+    }
+
+    .compact-buttons-input2:hover {
+        background-color: #e0e0e0;
+    }
+
+    .compact-buttons-input2 {
+        margin-right: 80px;
+        padding: 10px 15px !important;
+        border-radius: 20px !important;
+        border: 1px solid #ccc;
+        background-color: white;
+        transition: background-color 0.3s;
     }
 </style>
 <div class="row2" style="margin: 150px;">
@@ -21,25 +66,22 @@
     <div class="row2 form_content ">
         <form action="#" method="POST">
             <div class="row2 mb10 formds_loai">
-                <form action="index.php?act=listsp" method="post">
 
-
-                </form>
-                <table>
+                <table style=" margin-top :10px;">
                     <?php
                     if (!empty($thanhcong)) {
                         echo '<p style="color:red;">' . $thanhcong . '</p>';
                     }
                     ?>
                     <tr>
-                        <th></th>
-                        <th>MÃ DANH MỤC</th>
+                        
+                        <th>MÃ DỊCH VỤ</th>
                         <th>TÊN DỊCH VỤ</th>
                         <th>GIÁ</th>
                         <th>HÌNH</th>
                         <th>ICON</th>
                         <th>MÔ TẢ</th>
-                        <th></th>
+                        <th>THÒI GIAN DỰ KIẾN</th>
                     </tr>
 
                     <?php
@@ -63,19 +105,22 @@
                             $iconpath = "No file img!";
                         }
                         if ($trangthai == 0) {
-                        echo '<tr>
-                    <td><input type="checkbox" name="" id=""></td>
+                            echo '<tr>
+                    
                 <td>' . $MaDichVu . '</td>
                 <td>' . $name . '</td>
-                <td>' . $Gia . '</td>
+                <td>' . $Gia . ' <a>VND </a></td>
                 <td>' . $hinhpath . '</td>
-                <td>' . $iconpath . '</td>
-                <td>' . $MoTa . '</td>
-                <td><a href="' . $suasp . '"><input type="button" value="Sửa"> </a>  
-                <a href="' . $hard_delete . '"> <input type="button" value="Xóa " onclick="return confirm(\'bạn có muốn xóa  ko \')" ></a>
-                <a href="' . $soft_delete . '"> <input type="button" value="Ẩn" onclick="return confirm(\'bạn có muốn ẩn ko \')" ></a>
+                <td>' . $iconpath . '</td>  
+                <td class="description-column">' . $MoTa . '</td>
+                <td>' . $thoigiandukien . '</td>  
+                
+                <td><a href="' . $suasp . '"  ><input type="button" value="Sửa" class="compact-buttons-input" type="button"> </a>  
+                <a href="' . $hard_delete . '"> <input class="compact-buttons-input" type="button" value="Xóa " onclick="return confirm(\'bạn có muốn xóa  ko \' )" ></a>
+                <a href="' . $soft_delete . '"> <input class="compact-buttons-input2" type="button" value="Ẩn" onclick="return confirm(\'bạn có muốn ẩn ko \')"  ></a>
+                
             </tr>';
-                    }
+                        }
                     }
                     ?>
                 </table>

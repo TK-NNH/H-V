@@ -5,6 +5,7 @@ include "header.php";
 
 $dsdm = loadall_danhmuc();
 
+
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
@@ -20,6 +21,20 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
             include "listdichvu.php";
             break;
+
+        case "listcombo":
+            if (isset($_POST['clickOK']) && ($_POST['clickOK'])) {
+                $keyw = $_POST['keyw'];
+                $iddm = $_POST['iddm'];
+            } else {
+                $keyw = "";
+                $iddm = 0;
+            }
+            $listdanhmuc = loadall_danhmuc();
+
+            include "listcombo.php";
+            break;
+
         case "addsp":
             if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
 
@@ -28,6 +43,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $mota = $_POST['mota'];
                 $hinh = $_FILES['hinh']['name'];
                 $icon = $_FILES['icon']['name'];
+                $icon2 = $_FILES['icon2']['name'];
+                $thoigiandukien = $_POST['thoigiandukien'];
                 //                    echo $hinh;
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES['hinh']['name']);
@@ -45,8 +62,16 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 } else {
                     //                        echo "Upload ảnh không thành công";
                 }
+
+                $target_file = $target_dir . basename($_FILES['icon2']['name']);
+                //                    echo $target_file;
+                if (move_uploaded_file($_FILES['icon2']['tmp_name'], $target_file)) {
+                    //                        echo "Bạn đã upload ảnh thành công";
+                } else {
+                    //                        echo "Upload ảnh không thành công";
+                }
                 //                    echo $iddm;
-                insert_dichvu($tendv, $giadv, $hinh, $mota, $icon);
+                insert_dichvu($tendv, $giadv, $hinh, $mota, $icon, $icon2, $thoigiandukien);
                 $thanhcong = "Thêm thành công";
             }
 
@@ -54,11 +79,43 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "add.php";
             break;
 
+        case "addcombo":
+            if (isset($_POST['OK']) && ($_POST['OK'])) {
+
+                $tendv = $_POST['tendv'];
+                $giadv = $_POST['giadv'];
+                $mota = $_POST['mota'];
+                $hinh = $_FILES['hinh']['name'];
+
+                $thoigiandukien = $_POST['thoigiandukien'];
+                //                    echo $hinh;
+                $target_dir = "../upload/";
+                $target_file = $target_dir . basename($_FILES['hinh']['name']);
+                //                    echo $target_file;
+                if (move_uploaded_file($_FILES['hinh']['tmp_name'], $target_file)) {
+                    //                        echo "Bạn đã upload ảnh thành công";
+                } else {
+                    //                        echo "Upload ảnh không thành công";
+                }
+
+
+                insert_combo($tendv, $giadv, $hinh, $mota, $thoigiandukien);
+                $thanhcong = "Thêm thành công";
+            }
+
+            $listdanhmuc = loadall_danhmuc();
+            include "addcombo.php";
+            break;
+
         case "suasp":
 
             include "update.php";
             break;
 
+        case "suacombo":
+
+            include "updatecombo.php";
+            break;
         case "trangchu":
 
             include "listdichvu.php";
@@ -99,7 +156,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
 
         case "thungrac":
-           
+
             $listdanhmuc = loadall_danhmuc();
             $listsanpham = loadall_sanphamxoa($keyw, $iddm);
             include "thungrac.php";
@@ -113,6 +170,11 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             $listsanpham = loadall_sanphamxoa(0);
             $listdanhmuc = loadall_danhmuc();
             include "thungrac.php";
+            break;
+
+        case "lienhe":
+            $listlienhe = loadall_lienhe();
+            include "lienhe.php";
             break;
     }
 } else {

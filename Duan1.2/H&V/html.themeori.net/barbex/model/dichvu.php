@@ -19,7 +19,9 @@ function load_ten_dm($iddm)
                 'Gia' => $dm['Gia'],
                 'img' => $dm['img'],
                 'trangthai' => $dm['trangthai'],
-                'icon' => $dm['icon']
+                'icon' => $dm['icon'],
+                'icon2' => $dm['icon2'],
+                'thoigiandukien' => $dm['thoigiandukien']
             );
         } else {
             return "";
@@ -29,9 +31,15 @@ function load_ten_dm($iddm)
     }
 }
 
-function insert_dichvu($tendv, $giadv, $hinh, $mota, $icon)
+function insert_dichvu($tendv, $giadv, $hinh, $mota, $icon , $icon2 , $thoigiandukien)
 {
-    $sql = "INSERT INTO `dichvu`(`name`, `Gia`, `img`, `MoTa` ,`icon`) VALUES ('$tendv', '$giadv', '$hinh', '$mota' , '$icon')";
+    $sql = "INSERT INTO `dichvu`(`name`, `Gia`, `img`, `MoTa` ,`icon`,`icon2` , `thoigiandukien`) VALUES ('$tendv', '$giadv', '$hinh', '$mota' , '$icon' ,'$icon2' , '$thoigiandukien')";
+    pdo_execute($sql);
+}
+
+function insert_combo($tendv, $giadv, $hinh, $mota, $thoigiandukien)
+{
+    $sql = "INSERT INTO `dichvu`(`name`, `Gia`, `img`, `MoTa` , `thoigiandukien` , `trangthai`) VALUES ('$tendv', '$giadv', '$hinh', '$mota' , '$thoigiandukien' ,'3')";
     pdo_execute($sql);
 }
 
@@ -58,6 +66,7 @@ function hard_delete($id)
     pdo_execute($sql);
 }
 
+
 // cÂU TRUY VẤN XÓA MỀM
 function soft_delete($id)
 {
@@ -82,3 +91,26 @@ function khoiphuc($id)
     $sql = "UPDATE `dichvu` SET `trangthai` = 0 WHERE `dichvu`.`MaDichVu` = $id";
     pdo_execute($sql);
 }
+
+function luu_datlich($ten, $email, $sdt, $ngay, $gio, $dichvu, $giadv, $thoigiandukien ,$idkhachhang ) {
+    $sql = "INSERT INTO `lichhen`(`Ten`, `sdt`, `email`, `ThoiGianDat`, `Gio`, `DichVu`, `Gia`, `thoigiandukien` ,`MaKhachHang` , `TrangThai`) 
+            VALUES ('$ten', '$sdt', '$email', '$ngay $gio', '$gio', '$dichvu', '$giadv', '$thoigiandukien' , '$idkhachhang' ,'0')";
+    pdo_execute($sql);
+    return true; 
+}
+
+function loadall_lienhe()
+{
+    $sql = "SELECT * FROM lienhe ORDER BY thoigian ASC";
+    $listlienhe = pdo_query($sql);
+    return  $listlienhe;
+}
+
+
+function insert_lienhe($name, $email, $tel, $message)
+{
+    $sql = "INSERT INTO `lienhe` (`name`, `email`, `sdt`, `loinhan`, `thoigian`) 
+            VALUES ('$name', '$email', '$tel', '$message', NOW())";
+    pdo_execute($sql);
+}
+

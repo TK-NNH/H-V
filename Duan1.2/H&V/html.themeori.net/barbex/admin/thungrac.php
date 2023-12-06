@@ -1,4 +1,5 @@
 <style>
+    
     th {
         padding: 20px;
         margin: 20px 20px;
@@ -7,14 +8,34 @@
     td {
         margin: 20px 20px;
         padding: 20px 20px;
+        border: 1px solid black;
+    }
+
+    h1{ 
+        text-align: center;
+    }
+
+    table {
+        
+        align-items: center;
+        width: 100%; 
+        text-align: center;
+        border-collapse: collapse;
     }
 
     input {
         margin: 10px;
 
     }
+
+    .description-column {
+        max-width: 400px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 </style>
-<div class="row2" style="margin: 150px;">
+<div class="row2" style="margin: 100px;">
     <div class="row2 font_title">
         <h1>DANH SÁCH DỊCH VỤ BỊ ẨN</h1>
     </div>
@@ -32,14 +53,14 @@
                     }
                     ?>
                     <tr>
-                        <th></th>
-                        <th>MÃ DANH MỤC</th>
+                        
+                        <th>MÃ DỊCH VỤ</th>
                         <th>TÊN DỊCH VỤ</th>
                         <th>GIÁ</th>
                         <th>HÌNH</th>
                         <th>ICON</th>
                         <th>MÔ TẢ</th>
-                        <th></th>
+                        
                     </tr>
 
                     <?php
@@ -61,18 +82,19 @@
                         }
                         if ($trangthai == 1) {
                         echo '<tr>
-                    <td><input type="checkbox" name="" id=""></td>
+                    
                 <td>' . $MaDichVu . '</td>
                 <td>' . $name . '</td>
                 <td>' . $Gia . '</td>
                 <td>' . $hinhpath . '</td>
                 <td>' . $iconpath . '</td>
-                <td>' . $MoTa . '</td>
+                <td class:".description-column">' . $MoTa . '</td>
                 <td><a href="' . $khoiphuc . '"> <input type="button" value="Khôi phục" onclick="return confirm(\'bạn có muốn khôi phục ko \')" ></a></td>
             </tr>';
                     }
                     }
                     ?>
+                    
                 </table>
             </div>
             

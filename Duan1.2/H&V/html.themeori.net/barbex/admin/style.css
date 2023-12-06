@@ -905,3 +905,26 @@ ul {
         width: 1200px;
     }
 }
+
+input {
+	margin: 5px; 
+}
+
+.description-column {
+	max-width: 200px; 
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.compact-buttons-input {
+	padding: 8px; 
+	margin: 5px; 
+	border-radius: 8px; 
+	border: 1px solid #ccc; 
+	background-color: #f0f0f0; 
+}
+
+.compact-buttons input:hover {
+	background-color: #e0e0e0; 
+}

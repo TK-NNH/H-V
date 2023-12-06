@@ -16,6 +16,7 @@
 							<div class="col-xl-8 order-last order-lg-first">
 								<div class="banner__slide-content">
 									<span class="subtitle__one" data-animation="fadeInLeft" data-delay=".4s">Chào Mừng Đến Với Barbex</span>
+									
 									<h1 data-animation="fadeInLeft" data-delay=".6s">Best Hair Salon for a Professional Look</h1>
 									<div class="banner__slide-content-button" data-animation="fadeInLeft" data-delay=".9s">
 										<a href="index.php?act=about-us" class="theme-banner-btn">Đọc Thêm<i class="far fa-angle-double-right"></i></a>
@@ -86,7 +87,7 @@
 						</div>
 						<div class="about__area-right-bottom mt-35">
 							<h5>Chúng tôi là thẩm mỹ viện độc lập hàng đầu ở Dubai, cung cấp mọi thứ từ cắt tóc đến tẩy da chết</h5>
-							<a href="about.html" class="theme-btn mt-50">Đọc Thêm<i class="far fa-angle-double-right"></i></a>
+							<a href="index.php?act=about-us" class="theme-btn mt-50">Đọc Thêm<i class="far fa-angle-double-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -119,13 +120,15 @@
 								extract($dm);
 								$hinh = $img_path . $img;
 								$icon = $img_path . $icon;
+								$icon2 = $img_path . $icon2;
 								if ($trangthai == 0) {
-									echo '<div class="nav-item">';
+									echo '<li class="nav-item">';
 									echo '<button class="nav-item-button" data-bs-toggle="pill" data-bs-target="#dichvu' . $MaDichVu . '">';
-									echo '<img src="' . $icon . '" alt="' . $name . '">';
+									echo '<img class="nav-item-button-icon" src="' . $icon . '" alt="' . $name . '">';
+									echo '<img class="nav-item-button-icon2" src="' . $icon2 . '" alt="' . $name . '">';
 									echo '<p class="tieude">' . $name . '</p>';
 									echo '</button>';
-									echo '</div>';
+									echo '</li>';
 								}
 							}
 							?>
@@ -145,6 +148,7 @@
 								echo '<div class="row align-items-center">';
 								echo '<div class="col-xl-6 col-lg-6 lg-mb-30">';
 								echo '<img class="img__full" src="' . $hinh . '" alt="' . $name . '">';
+								
 								echo '</div>';
 								echo '<div class="col-xl-6 col-lg-6">';
 								echo '<div class="services__area-right ml-40 lg-ml-0">';
@@ -174,7 +178,7 @@
 						<span class="subtitle__two">Booking</span>
 						<span class="subtitle__one">Booking Now</span>
 						<h2>Book your appointment online And call our salon</h2>
-						<a href="contact.html" class="theme-banner-btn mt-40">Booking Appoitment<i class="far fa-angle-double-right"></i></a>
+						<a href="index.php?act=datlich" class="theme-banner-btn mt-40">Booking Appoitment<i class="far fa-angle-double-right"></i></a>
 					</div>
 				</div>
 				<div class="col-xl-5 col-lg-4">
@@ -185,7 +189,7 @@
 							</div>
 							<div class="booking__area-right-contact-content">
 								<span>Call Mow</span>
-								<h4><a href="tel:+123(568)584">+123 (568) 584</a></h4>
+								<h4><a href="tel:+123(568)584">0398455982</a></h4>
 							</div>
 						</div>
 					</div>
@@ -203,7 +207,7 @@
 					<div class="working__area-left">
 						<img src="assets/img/working.jpg" alt="">
 						<div class="working__area-left-play-icon video-pulse">
-							<a class="video-popup" href="https://www.youtube.com/watch?v=0WC-tD-njcA"><i class="fas fa-play"></i></a>
+							<a class="video-popup" href="https://www.youtube.com/watch?v=VdAhzb-dv1E"><i class="fas fa-play"></i></a>
 						</div>
 					</div>
 				</div>
@@ -212,16 +216,20 @@
 						<div class="working__area-right-title">
 							<span class="subtitle__two">Working</span>
 							<h2>Working Hours</h2>
-							<p>Fusce id lorem risus. Duis mattis, nulla et placerat pretium, purus ex luctus nisi,</p>
+							<p></p>
 						</div>
 						<div class="working__area-right-hours">
 							<ul>
 								<li>Thứ Hai<span>9: AM - 6: PM</span></li>
-								<li>Thứ Ba<span>11: AM - 8: PM</span></li>
-								<li>Thứ Tư <span>6: AM - 4: PM</span></li>
+								<li>Thứ Ba<span>9: AM - 6: PM</span></li>
+								<li>Thứ Tư <span>9: AM - 6: PMM</span></li>
+								<li>Thứ Năm <span>9: AM - 6: PM</span></li>
+								<li>Thứ Sáu <span>9: AM - 6: PM</span></li>
+								<li>Thứ Bảy <span>9: AM - 6: PM</span></li>
+								<li>Chủ Nhật<span>9: PM - 6: PM</span></li>
 							</ul>
 						</div>
-						<a href="contact.html" class="theme-border-btn">Booking Appointment<i class="far fa-angle-double-right"></i></a>
+						<a href="index.php?act=datlich" class="theme-border-btn">Booking Appointment<i class="far fa-angle-double-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -231,58 +239,5 @@
 
 
 	<!-- Instagram Area Start -->
-	<div class="instagram__area one">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-lg-2 col-lg-2 col-sm-4 pl-5 pr-5 lg-mb-10">
-					<div class="instagram__area-item">
-						<img src="assets/img/features/instagram-1.jpg" alt="">
-						<div class="instagram__area-item-icon">
-							<a href="#"><i class="fab fa-instagram"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-2 col-lg-2 col-sm-4 pl-5 pr-5 sm-mb-10">
-					<div class="instagram__area-item">
-						<img src="assets/img/features/instagram-2.jpg" alt="">
-						<div class="instagram__area-item-icon">
-							<a href="#"><i class="fab fa-instagram"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-2 col-lg-2 col-sm-4 pl-5 pr-5 sm-mb-10">
-					<div class="instagram__area-item">
-						<img src="assets/img/features/instagram-3.jpg" alt="">
-						<div class="instagram__area-item-icon">
-							<a href="#"><i class="fab fa-instagram"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-2 col-lg-2 col-sm-4 pl-5 pr-5 sm-mb-10">
-					<div class="instagram__area-item">
-						<img src="assets/img/features/instagram-4.jpg" alt="">
-						<div class="instagram__area-item-icon">
-							<a href="#"><i class="fab fa-instagram"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-2 col-lg-2 col-sm-4 pl-5 pr-5 sm-mb-10">
-					<div class="instagram__area-item">
-						<img src="assets/img/features/instagram-5.jpg" alt="">
-						<div class="instagram__area-item-icon">
-							<a href="#"><i class="fab fa-instagram"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-2 col-lg-2 col-sm-4 pl-5 pr-5">
-					<div class="instagram__area-item">
-						<img src="assets/img/features/instagram-6.jpg" alt="">
-						<div class="instagram__area-item-icon">
-							<a href="#"><i class="fab fa-instagram"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 	<!-- Instagram Area End -->

@@ -12,10 +12,17 @@
 						</div>
 						<div class="footer__area-left-menu">
 							<ul>
-								<li><a href="services.html">Trend Haircut</a></li>
-								<li><a href="services.html">Hair Washing</a></li>
-								<li><a href="services.html">Hair Coloring</a></li>
-								<li><a href="services.html">Facial hair Trim</a></li>
+							<?php
+										
+										
+										$dsdm = loadall_danhmuc();
+										foreach ($dsdm as $dm) {
+											extract($dm);
+											if ($trangthai == 0) {
+											echo '<li><a href="index.php?act=chitietdichvu&MaDichVu=' . $dm['MaDichVu'] . '">' . $dm['name'] . '</a></li>';
+										}
+									}
+										?>
 							</ul>				
 						</div>
 					</div>

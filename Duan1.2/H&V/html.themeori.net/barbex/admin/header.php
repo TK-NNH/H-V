@@ -26,8 +26,10 @@
 	<link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
 	<!-- Magnific -->
 	<link rel="stylesheet" href="assets/css/magnific-popup.css">
+	
+
 	<!-- Mean menu -->
-	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+	
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="assets/sass/style.css">
 </head>
@@ -64,11 +66,10 @@
         }
     
 </style>
-
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <body>
 
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 	<!-- Preloader start -->
 	
@@ -93,16 +94,15 @@
 					<div class="header__area-menubar-right">
 						<div class="header__area-menubar-right-menu menu-responsive">
 							<ul id="mobilemenu">
-								<li class=""><a href="index.php?act=trangchu">Danh Sách</a>
-
-								</li>
+								<li class=""><a href="index.php?act=trangchu">Dịch Vụ</a></li>
+								<li class=""><a href="index.php?act=listcombo">COMBO</a></li>
+								<li class=""><a href="index.php?act=thungrac">Thùng rác</a></li>
+								<li class=""><a href="index.php?act=quanlybinhluan">Bình Luận</a></li>
 								
-								<li class=""><a href="index.php?act=thungrac">Thùng rác</a>
-			
-								</li>
-								<li class=""><a href="index.php?act=quanlybinhluan">Bình Luận</a>
-
-								</li>
+								<li class=""><a href="lichhen.php?act=listlichhen">Lịch hẹn</a></li>
+								
+								<li class=""><a href="VNPAY.php?act=listVNPAY"  >Thanh toán</a></li>
+								<li class=""><a href="index.php?act=lienhe"  >Liên Hệ</a></li>
 
 								
 							</ul>
