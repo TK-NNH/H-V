@@ -36,6 +36,7 @@ if (isset($_POST['xacnhan'])) {
     $gio = $_POST['selected_time'];
     $dichvu = $_POST['dichvu'];
     $giaDichVu = $_POST['gia'];
+
     $thoiGianDuKien = $_POST['thoigiandukien'];
     $idkhachhang = $_POST['idkhachhang'];
 
@@ -239,13 +240,14 @@ if (isset($_POST['xacnhan'])) {
         }
 
         function updateAmount() {
-
             var selectedService = document.getElementById('dichvu');
             var selectedOption = selectedService.options[selectedService.selectedIndex];
             var servicePrice = selectedOption.getAttribute('data-gia');
 
-
             document.getElementById('amount').value = servicePrice;
+
+            
+            document.forms["formdatlich"].submit();
         }
     </script>
 

@@ -3,7 +3,7 @@
     
     //dang ky
     function insert_taikhoan($email,$user,$pass,$sdt){
-        $sql="INSERT INTO `taikhoan` ( `email`, `user`, `pass` , `tel`) VALUES ( '$email', '$user','$pass' , '$sdt'); ";
+        $sql="INSERT INTO `taikhoan` ( `email`, `user`, `pass` , `tel` , `role`) VALUES ( '$email', '$user','$pass' , '$sdt' , '0'); ";
         pdo_execute($sql);
     }
 
@@ -14,7 +14,7 @@
         if ($taikhoan) {
             $_SESSION['user_id'] = $taikhoan['id']; // Lưu id vào session
             $_SESSION['user'] = $user;
-    
+          
             if ($taikhoan['role'] == 0) {
                 echo '<script>window.location.href = "index.php?act=trangchu";</script>';
             } elseif ($taikhoan['role'] == 1) {
@@ -31,6 +31,23 @@
             unset($_SESSION['user']);
         }
     }
+
+    function layThongTinTaiKhoan($userId) {
+        $sql = "SELECT * FROM taikhoan WHERE id='$userId'";
+        return pdo_query_one($sql);
+    }
+    
+    function kiemTraMatKhauHienTai($userId, $matKhauHienTai) {
+        $sql = "SELECT * FROM taikhoan WHERE id='$userId' AND pass='$matKhauHienTai'";
+        $taikhoan = pdo_query_one($sql);
+        return $taikhoan !== false;
+    }
+
+    function capNhatMatKhau($userId, $matKhauMoi) {
+        $sql = "UPDATE taikhoan SET pass='$matKhauMoi' WHERE id='$userId'";
+        pdo_execute($sql);
+    }
+    
 
     function sendMail($email) {
         $sql="SELECT * FROM taikhoan WHERE email='$email'";

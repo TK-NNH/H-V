@@ -14,7 +14,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
         case "lienhe":
-           
+
             include "view/lienhe.php";
             break;
 
@@ -45,7 +45,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
 
         case "dangnhap":
-            
+
             if (isset($_POST['dangnhap'])) {
                 $loginMessage = dangnhap($_POST['user'], $_POST['pass']);
 
@@ -71,6 +71,37 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $thongbao = "Đăng ký thành công";
             }
             include "view/login/dangky.php";
+            break;
+
+            case "thongtintaikhoan":
+                
+                include "view/thongtintaikhoan.php";
+                break;
+            
+
+        case "doimatkhau":
+            if (isset($_POST['doimatkhau'])) {
+                $userId = $_SESSION['user_id'];
+                $matKhauHienTai = $_POST['pass_hientai'];
+                $matKhauMoi = $_POST['pass_moi'];
+                $nhapLaiMatKhau = $_POST['pass_nhaplai'];
+
+
+                if (kiemTraMatKhauHienTai($userId, $matKhauHienTai)) {
+
+                    if ($matKhauMoi === $nhapLaiMatKhau) {
+
+                        capNhatMatKhau($userId, $matKhauMoi);
+                        $thongbao = "Đổi mật khẩu thành công";
+                    } else {
+                        $thongbao = "Mật khẩu mới và nhập lại mật khẩu không khớp";
+                    }
+                } else {
+                    $thongbao = "Mật khẩu hiện tại không đúng";
+                }
+            }
+
+            include "view/login/doimatkhau.php";
             break;
 
         case "datlich":

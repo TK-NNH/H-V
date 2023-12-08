@@ -30,7 +30,7 @@
 	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="assets/sass/style.css">
-	
+
 </head>
 <style>
 	.logout-button {
@@ -58,14 +58,14 @@
 		/* Thay đổi màu khi di chuột vào */
 	}
 
-	.button{
+	.button {
 		background-color: greenyellow;
 	}
 </style>
 
 <body>
 	<!-- Preloader start -->
-	
+
 	<!-- Preloader end -->
 	<!-- Header Area Start -->
 	<div class="header__sticky one" style="background: var(--heading-color);">
@@ -78,9 +78,7 @@
 							<div class="responsive-menu"></div>
 						</div>
 						<div class="header__area-menubar-left-contact">
-							<div class="header__area-menubar-left-contact-icon">
-								<i class="fal fa-phone-alt"></i>
-							</div>
+
 							<div class="header__area-menubar-left-contact-info">
 								<h6><a href="tel:+125(895)658">0398455982</a></h6>
 							</div>
@@ -95,15 +93,15 @@
 								<li class="menu-item-has-children"><a href="#">Dịch Vụ</a>
 									<ul class="sub-menu">
 										<?php
-										
-										
+
+
 										$dsdm = loadall_danhmuc();
 										foreach ($dsdm as $dm) {
 											extract($dm);
 											if ($trangthai == 0) {
-											echo '<li><a href="index.php?act=chitietdichvu&MaDichVu=' . $dm['MaDichVu'] . '">' . $dm['name'] . '</a></li>';
+												echo '<li><a href="index.php?act=chitietdichvu&MaDichVu=' . $dm['MaDichVu'] . '">' . $dm['name'] . '</a></li>';
+											}
 										}
-									}
 										?>
 									</ul>
 								</li>
@@ -112,12 +110,18 @@
 								</li>
 
 								<li><a href="index.php?act=lienhe">Liên Hệ</a></li>
-								<?php 
-								  if (isset($_SESSION['user'])) {
+								<?php
+								if (isset($_SESSION['user'])) {
 									echo '<li><a href="index.php?act=lichhen">Lịch sử</a></li>';
-								  }
+								}
 								?>
-								
+
+								<?php
+								if (isset($_SESSION['user'])) {
+									echo '<li><a href="index.php?act=thongtintaikhoan">Tài khoản</a></li>';
+								}
+								?>
+
 							</ul>
 						</div>
 						<div class="header__area-menubar-right-box">
@@ -144,9 +148,9 @@
 								<?php else : ?>
 									<a href="index.php?act=dangnhap" class="theme-banner-btn" id="dangnhap">Đăng nhập</a>
 								<?php endif; ?>
-								
+
 							</div>
-							
+
 						</div>
 					</div>
 				</div>
